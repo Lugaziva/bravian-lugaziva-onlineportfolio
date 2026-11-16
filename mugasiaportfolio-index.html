@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mugasia Bravian | Data Portfolio</title>
+<style>
+:root{
+  --bg:#f7f8fa;--surface:#ffffff;--text:#14213d;--muted:#5b6578;--accent:#0f766e;--accent-ink:#ffffff;
+  --soft:#d9f2ef;--border:#e3e7ee;--hero:#14213d;--hero-text:#f1f5fb;
+  color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1525;--surface:#162036;--text:#e8edf7;--muted:#9aa7bd;--accent:#2dd4bf;--accent-ink:#0e1525;
+    --soft:#12332f;--border:#263554;--hero:#0a1020;--hero-text:#f1f5fb;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1525;--surface:#162036;--text:#e8edf7;--muted:#9aa7bd;--accent:#2dd4bf;--accent-ink:#0e1525;
+  --soft:#12332f;--border:#263554;--hero:#0a1020;--hero-text:#f1f5fb;color-scheme:dark;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;letter-spacing:.5px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo span{display:grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-size:14px}
+nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-size:15px;font-weight:600}
+nav a:hover{color:var(--accent)}
+.hero{background:var(--hero);color:var(--hero-text)}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding-top:72px;padding-bottom:72px}
+.eyebrow{color:#5eead4;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:10px 0 16px}
+.hero p{color:#c3cde0;max-width:520px;font-size:18px;margin:0 0 26px}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;margin:0 10px 10px 0;border:2px solid #5eead4}
+.btn.primary{background:#5eead4;color:#0a1020}
+.btn.ghost{color:#5eead4}
+.chart{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:22px}
+.chart small{color:#9fb0cc;display:block;margin-bottom:14px}
+.bars{display:flex;align-items:flex-end;gap:12px;height:150px}
+.bars i{flex:1;border-radius:8px 8px 0 0;background:linear-gradient(#5eead4,#0f766e)}
+section{padding:64px 0}
+h2{font-size:30px;margin:0 0 8px}
+.lead{color:var(--muted);margin:0 0 30px;max-width:620px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px}
+.facts{list-style:none;margin:0;padding:0}
+.facts li{padding:10px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;gap:12px}
+.facts li:last-child{border:0}
+.facts b{color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.filters button{font:inherit;font-weight:700;padding:8px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.proj h3{margin:10px 0 6px}
+.proj p{color:var(--muted);margin:0 0 14px;font-size:15px}
+.tag{display:inline-block;background:var(--soft);color:var(--accent);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin:0 6px 6px 0}
+.soon{opacity:.75;border-style:dashed}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{background:var(--surface);border:1px solid var(--border);padding:9px 16px;border-radius:999px;font-weight:600}
+.contact{background:var(--soft);border-radius:20px;padding:36px;text-align:center}
+.contact p{color:var(--muted);margin:0 auto 20px;max-width:480px}
+.contact .btn{border-color:var(--accent);color:var(--accent);margin:6px}
+.contact .btn.primary{background:var(--accent);color:var(--accent-ink)}
+footer{padding:26px 0;text-align:center;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
+@media (max-width:760px){
+  .hero .wrap,.about{grid-template-columns:1fr}
+  nav a{margin-left:12px;font-size:14px}
+  .logo b{display:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#top"><span>MB</span><b>Mugasia Bravian</b></a>
+  <nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Data portfolio</div>
+    <h1>Hi, I’m Mugasia Bravian.</h1>
+    <p>I turn raw numbers into clear, useful stories, using Python, SQL, Excel and Power BI.</p>
+    <a class="btn primary" href="#projects">View my projects</a><a class="btn ghost" href="#contact">Get in touch</a>
+  </div>
+  <div class="chart" aria-hidden="true">
+    <small>Sales by branch (sample)</small>
+    <div class="bars"><i style="height:45%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i><i style="height:65%"></i></div>
+  </div>
+</div></div>
+
+<section id="about"><div class="wrap">
+  <h2>About me</h2>
+  <p class="lead">A short introduction to who I am and the kind of work I enjoy.</p>
+  <div class="about">
+    <div class="card"><p>I’m a data analytics learner who enjoys finding the story hiding in a dataset. I like to clean the data, ask clear questions, and present answers that anyone can understand.</p>
+    <p>I’m studying at UON and building my skills through hands-on data projects.</p></div>
+    <div class="card"><ul class="facts">
+      <li><span>School</span><b>UON</b></li>
+      <li><span>Focus</span><b>Data analysis</b></li>
+      <li><span>Tools</span><b>Python, SQL, Excel, Power BI</b></li>
+      <li><span>Approach</span><b>Clear, simple, accurate</b></li>
+    </ul></div>
+  </div>
+</div></section>
+
+<section id="projects" style="background:var(--surface)"><div class="wrap">
+  <h2>Projects</h2>
+  <p class="lead">Pick a tool to filter my work.</p>
+  <div class="filters" id="filters">
+    <button class="on" data-f="all">All</button><button data-f="python">Python</button><button data-f="sql">SQL</button><button data-f="excel">Excel</button><button data-f="powerbi">Power BI</button>
+  </div>
+  <div class="grid">
+    <div class="card proj" data-c="python"><span class="tag">Python</span><h3>Supermarket Sales Analysis</h3>
+      <p>Explored 120 transactions with pandas: total and average sales, the best branch and category, and Seaborn charts.</p><span class="tag">pandas</span><span class="tag">Seaborn</span></div>
+    <div class="card proj" data-c="sql"><span class="tag">SQL</span><h3>Student Performance Queries</h3>
+      <p>Wrote SQLite queries to count enrolment, group by class and gender, filter high scorers, and rank the top 10.</p><span class="tag">SQLite</span><span class="tag">GROUP BY</span></div>
+    <div class="card proj soon" data-c="excel"><span class="tag">Excel</span><h3>Coming soon</h3>
+      <p>A pivot-table and dashboard project will go here.</p></div>
+    <div class="card proj soon" data-c="powerbi"><span class="tag">Power BI</span><h3>Coming soon</h3>
+      <p>An interactive report will go here.</p></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills</h2>
+  <p class="lead">What I bring to a data project.</p>
+  <div class="chips"><span>Data cleaning</span><span>Exploratory analysis</span><span>Data visualization</span><span>Reporting</span><span>Python</span><span>SQL</span><span>Excel</span><span>Power BI</span></div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <div class="contact">
+    <h2>Let’s work together</h2>
+    <p>Have a dataset, a question, or an opportunity? I’d love to hear from you.</p>
+    <a class="btn primary" href="mailto:bravianmugasia@gmail.com">Email me</a><a class="btn" href="tel:0185304855">Call me</a><a class="btn" href="#top">Back to top</a>
+    <p style="margin-top:14px;font-size:14px">bravianmugasia@gmail.com &middot; 0185304855</p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Mugasia Bravian. All rights reserved.</div></footer>
+
+<script>
+document.getElementById("filters").addEventListener("click",function(e){
+  var b=e.target.closest("button"); if(!b) return;
+  var f=b.getAttribute("data-f");
+  document.querySelectorAll("#filters button").forEach(function(x){x.classList.toggle("on",x===b)});
+  document.querySelectorAll(".proj").forEach(function(c){c.style.display=(f==="all"||c.getAttribute("data-c")===f)?"":"none"});
+});
+</script>
+</body>
+</html>
